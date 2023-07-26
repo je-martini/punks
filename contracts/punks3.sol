@@ -19,7 +19,21 @@ contract punks3 is ERC721, ERC721Enumerable {
         uint256 current = _id_counter.current();
         require(current < max_supply, "no more punks :( ");
         _safeMint( msg.sender, current);
+        _id_counter.increment();
     }
+
+    function tokenURI(uint256 token_Id)
+        public
+        view
+        override
+        returns( string memory){
+            require(_exists(token_Id), "ERC721 Metadata: URI query for nonexistent token");
+        
+        string memory json_URI;
+        
+        return "";
+
+        }
 
         // The following functions are overrides required by Solidity.
     // override
