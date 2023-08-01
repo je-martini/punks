@@ -3,12 +3,14 @@ pragma solidity ^0.8.2 ;
 
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/utils/Counters.sol";   
 import "./base64.sol"; 
 import "./dna_punks.sol";
 
 contract punks3 is ERC721, ERC721Enumerable, dna_punks {
     using Counters for Counters.Counter;
+    using Strings for uint256;
     
     Counters.Counter private _id_counter;
     uint256 public max_supply; 
@@ -85,7 +87,7 @@ contract punks3 is ERC721, ERC721Enumerable, dna_punks {
         string memory json_URI = Base64.encode(
             abi.encodePacked(
                 '{ "name": "punks #',
-                token_Id,
+                token_Id.toString(),
                 '", "description": "Platzi Punks are randomized Avataaars stored on chain to teach DApp development on Platzi", "image": "',
                 image,
                 '"}' 

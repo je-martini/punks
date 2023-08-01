@@ -6,7 +6,7 @@ const deploy = async () => {
   
   const punks3 = await ethers.getContractFactory("punks3");
 
-  const deployed = await punks3.deploy();
+  const deployed = await punks3.deploy(10000);
 
   console.log("punks was deploy at: ", deployed.target);
 };
